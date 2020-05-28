@@ -14,6 +14,8 @@ import { selectCurrentUser } from './redux/user/user-selectors'
 import { createStructuredSelector } from 'reselect'
 import { selectShopCollectionArray } from './redux/shop/shop-selector'
 
+
+
 class App extends React.Component {
 
   constructor() {

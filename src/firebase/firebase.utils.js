@@ -2,14 +2,17 @@ import firebase from 'firebase/app'
 import 'firebase/auth'
 import 'firebase/firestore'
 
+import { apiKey, authDomain, databaseURL, projectId, storageBucket, messagingSenderId, appId } from '../env_vars'
+
+
 let firebaseConfig = {
-    apiKey: "AIzaSyDSIEnkkxd-8Mpk8eYvgnElXg5vfSw7iFk",
-    authDomain: "crown-db-3ca6e.firebaseapp.com",
-    databaseURL: "https://crown-db-3ca6e.firebaseio.com",
-    projectId: "crown-db-3ca6e",
-    storageBucket: "crown-db-3ca6e.appspot.com",
-    messagingSenderId: "955084188655",
-    appId: "1:955084188655:web:573faa5fd093748570e41a"
+    apiKey,
+    authDomain,
+    databaseURL,
+    projectId,
+    storageBucket,
+    messagingSenderId,
+    appId
 };
 
 firebase.initializeApp(firebaseConfig);
