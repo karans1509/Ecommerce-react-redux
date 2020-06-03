@@ -88,8 +88,6 @@ export const convertCollectionToMap = (collections) => {
         }
     }) 
 
-    console.log(convertedCollection);
-
     return convertedCollection.reduce((accumulator, collection) => {
         accumulator[collection.title.toLowerCase()] = collection;
         return accumulator;

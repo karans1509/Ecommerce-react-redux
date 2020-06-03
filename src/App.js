@@ -3,33 +3,27 @@ import React from 'react';
 import './App.css';
 import HomePage from './pages/HomePage/HomePage'
 import ShopPage from './pages/ShopPage/ShopPage'
-import { BrowserRouter as Router, Switch, Route, Link, Redirect } from 'react-router-dom'
+import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom'
 import Header from './components/Header/Header'
 import AuthPage from './pages/AuthPage/AuthPage'
 import CheckoutPage from './pages/CheckoutPage/CheckoutPage'
-import { auth, createUserProfileDocument, addCollectionAndItems } from './firebase/firebase.utils'
+import { auth, createUserProfileDocument } from './firebase/firebase.utils'
 import { connect } from 'react-redux'
 import { setCurrentUser } from './redux/user/user-actions'
 import { selectCurrentUser } from './redux/user/user-selectors'
 import { createStructuredSelector } from 'reselect'
-import { selectShopCollectionArray } from './redux/shop/shop-selector'
+// import { selectShopCollectionArray } from './redux/shop/shop-selector'
 
 
 
 class App extends React.Component {
 
-  constructor() {
-    super();
-
-  }
-
   unsubscribeFromAuth = null;
 
   componentDidMount() {
 
-    const { setCurrentUser, collections } = this.props;
+    const { setCurrentUser } = this.props;
 
-    console.log(collections)
 
     this.unsubscribeFromAuth = auth.onAuthStateChanged(async user => {
 
@@ -48,8 +42,6 @@ class App extends React.Component {
       else {
         setCurrentUser(user);
       }
-
-      // addCollectionAndItems('collections', collections.map( ({ title, items }) => ( { title, items } )));
 
     })
 
@@ -83,8 +75,7 @@ class App extends React.Component {
 }
 
 const mapStateToProps =  createStructuredSelector({
-  currentUser: selectCurrentUser,
-  collections: selectShopCollectionArray
+  currentUser: selectCurrentUser
 })
 
 const mapDispatchToProps = (dispatch) => ({
